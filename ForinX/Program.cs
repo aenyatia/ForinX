@@ -1,1 +1,3 @@
-﻿Console.WriteLine("Hello, World!");
+﻿using ForinX;
+
+new Game().Run();
