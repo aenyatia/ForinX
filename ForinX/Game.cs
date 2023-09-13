@@ -12,17 +12,16 @@ public class Game
 
     private readonly RenderWindow _window;
 
-    private readonly CircleShape _player = new()
-    {
-        Radius = 40f,
-        Position = new Vector2f(100f, 100f),
-        FillColor = Color.Cyan
-    };
+    private readonly Sprite _player;
 
     public Game()
     {
         _window = new RenderWindow(new VideoMode(Width, Height), Title);
         _window.Closed += (_, _) => _window.Close();
+
+        _player = new Sprite(new Texture("../../../Images/ahri.png"));
+        _player.Position = new Vector2f(100f, 100f);
+        _player.Scale = new Vector2f(0.25f, 0.25f);
     }
 
     public void Run()
