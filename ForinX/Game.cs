@@ -10,8 +10,8 @@ public class Game
     private const int Height = 1080;
     private const string Title = "ForinX";
 
+    private readonly TexturesManager _texturesManager = new();
     private readonly RenderWindow _window;
-
     private readonly Sprite _player;
 
     public Game()
@@ -19,9 +19,9 @@ public class Game
         _window = new RenderWindow(new VideoMode(Width, Height), Title);
         _window.Closed += (_, _) => _window.Close();
 
-        _player = new Sprite(new Texture("../../../Images/ahri.png"));
+        _player = new Sprite(_texturesManager.Get(Id.Ahri));
         _player.Position = new Vector2f(100f, 100f);
-        _player.Scale = new Vector2f(0.25f, 0.25f);
+        _player.Scale = new Vector2f(0.5f, 0.5f);
     }
 
     public void Run()
