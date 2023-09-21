@@ -8,7 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="OpenTK" Version="4.8.0" />
       <PackageReference Include="SFML.Net" Version="2.5.1" />
     </ItemGroup>
+
 
 </Project>
