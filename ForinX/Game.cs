@@ -10,18 +10,15 @@ public class Game
     private const int Height = 1080;
     private const string Title = "ForinX";
 
-    private readonly TexturesManager _texturesManager = new();
     private readonly RenderWindow _window;
-    private readonly Sprite _player;
+    private readonly World _world;
 
     public Game()
     {
         _window = new RenderWindow(new VideoMode(Width, Height), Title);
         _window.Closed += (_, _) => _window.Close();
 
-        _player = new Sprite(_texturesManager.Get(Id.Ahri));
-        _player.Position = new Vector2f(100f, 100f);
-        _player.Scale = new Vector2f(0.5f, 0.5f);
+        _world = new World(_window, new TexturesManager());
     }
 
     public void Run()
@@ -77,13 +74,15 @@ public class Game
         if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
             _window.Close();
 
-        _player.Position += movement * dt.AsSeconds();
+        _world.Update(dt);
     }
 
     private void Render()
     {
         _window.Clear();
-        _window.Draw(_player);
+
+        _world.Draw();
+
         _window.Display();
     }
 
